@@ -513,9 +513,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
 .service p{font-size:12px;color:#617084;line-height:1.6}
 .service .arrow{margin-top:16px;font-size:11px;font-weight:900;color:var(--blue2)}
 
-/* ========================================================
-   FEATURED PRODUCTS (FIXED CLICKABILITY, FLEXBOX & ALIGNMENT)
-   ======================================================== */
+/* FEATURED PRODUCTS */
 .shop{background:var(--bg)}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .filter{
@@ -543,7 +541,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   transition:all .35s var(--ease);
   display:flex;
   flex-direction:column;
-  cursor:pointer; /* FIX: Seluruh kad boleh klik */
+  cursor:pointer;
 }
 .product:hover{
   transform:translateY(-8px);
@@ -597,7 +595,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   padding:18px;
   display:flex;
   flex-direction:column;
-  flex:1; /* Pastikan ruang kad seimbang */
+  flex:1;
 }
 .product-cat{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#8592a3;font-weight:900}
 .product-name{font-size:15px;color:var(--navy);font-weight:850;margin:6px 0 4px;line-height:1.35}
@@ -608,7 +606,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-top:auto; /* Selaraskan butang & harga di bahagian bawah */
+  margin-top:auto;
   padding-top:12px;
   border-top:1px solid rgba(9,30,66,.05);
 }
@@ -632,6 +630,193 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   transform:scale(1.04);
   background:var(--blue2);
 }
+
+/* ========================================================
+   UNION IV FLAGSHIP LOCATION & SMART GEOLOCATION (CUSTOM)
+   ======================================================== */
+.location-section{background:var(--bg-subtle)}
+.location-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:stretch}
+.location-card{
+  background:linear-gradient(155deg,#ffffff 0%,#f0f4fa 100%);
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:28px;
+  padding:32px;
+  box-shadow:var(--raised-shadow);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.location-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}
+.loc-institution-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 12px;
+  border-radius:99px;
+  background:#e5edf8;
+  color:var(--blue);
+  font-size:9.5px;
+  font-weight:900;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.loc-name{font-size:27px;color:var(--navy);font-weight:900;line-height:1.15;letter-spacing:-.8px}
+.loc-sub{font-size:12px;color:#5a687d;margin-top:4px}
+.loc-status-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:10.5px;
+  font-weight:850;
+  letter-spacing:.5px;
+  background:#d1fae5;
+  color:#065f46;
+  border:1px solid rgba(16,185,129,.25);
+  box-shadow:0 4px 12px rgba(16,185,129,.15);
+  white-space:nowrap;
+}
+.loc-status-dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.3);animation:pulseDot 1.8s infinite}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+.loc-status-pill.closed{background:#fee2e2;color:#991b1b;border-color:rgba(239,68,68,.25)}
+.loc-status-pill.closed .loc-status-dot{background:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.3);animation:none}
+
+.location-details-list{display:grid;gap:12px;margin:20px 0}
+.loc-detail-row{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:12px 14px;
+  background:rgba(255,255,255,.75);
+  border:1px solid rgba(9,30,66,.05);
+  border-radius:16px;
+}
+.loc-detail-icon{
+  width:32px;
+  height:32px;
+  border-radius:10px;
+  background:#eaf1fc;
+  color:var(--blue);
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+}
+.loc-detail-text b{display:block;font-size:11.5px;color:var(--navy);font-weight:800;line-height:1.4}
+.loc-detail-text span{display:block;font-size:10px;color:#718094;margin-top:2px}
+
+/* GEOLOCATION LIVE RADAR BOX */
+.geo-smart-box{
+  background:linear-gradient(145deg, #091e42 0%, #0e3b79 100%);
+  color:#fff;
+  border-radius:20px;
+  padding:18px 20px;
+  margin:10px 0 20px;
+  box-shadow:0 14px 30px rgba(9,30,66,.2);
+  position:relative;
+  overflow:hidden;
+}
+.geo-smart-box:after{
+  content:"";
+  position:absolute;
+  right:-30px;
+  bottom:-30px;
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle, rgba(27,99,199,.4), transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.geo-box-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.geo-title{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#9bc2f7;display:flex;align-items:center;gap:6px}
+.geo-distance-display{font-size:20px;font-weight:950;color:#fff;margin-top:4px;display:flex;align-items:baseline;gap:6px}
+.geo-distance-display small{font-size:11px;font-weight:700;color:#a8c4ea}
+.geo-instruction{font-size:11px;color:#cbd9ec;line-height:1.5;margin-bottom:12px}
+.btn-geo-detect{
+  background:#fff;
+  color:var(--navy);
+  border:0;
+  border-radius:12px;
+  padding:9px 16px;
+  font-size:10.5px;
+  font-weight:900;
+  letter-spacing:.5px;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+  transition:all .25s ease;
+}
+.btn-geo-detect:hover{transform:translateY(-2px);background:#e7f0fc}
+
+.loc-action-buttons{display:grid;grid-template-columns:1.2fr 1fr;gap:10px}
+.btn-directions{
+  background:linear-gradient(145deg, var(--blue2), var(--blue));
+  color:#fff;
+  border-radius:14px;
+  padding:13px;
+  font-weight:900;
+  font-size:11.5px;
+  letter-spacing:.6px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  box-shadow:0 8px 20px rgba(27,99,199,.25);
+  transition:all .3s ease;
+}
+.btn-directions:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(27,99,199,.35)}
+.btn-secondary-loc{
+  background:var(--white-card);
+  color:var(--navy);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:14px;
+  padding:13px;
+  font-weight:850;
+  font-size:11px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  box-shadow:var(--raised-shadow);
+  transition:all .3s ease;
+}
+.btn-secondary-loc:hover{transform:translateY(-2px);background:#fff}
+
+/* MAP CONTAINER */
+.map-embed-wrapper{
+  position:relative;
+  min-height:480px;
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:var(--raised-shadow);
+  background:#e5ebf3;
+}
+.map-embed-wrapper iframe{
+  width:100%;
+  height:100%;
+  min-height:480px;
+  border:0;
+  display:block;
+}
+.map-floating-chip{
+  position:absolute;
+  top:16px;
+  left:16px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);
+  padding:8px 14px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(9,30,66,.12);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(255,255,255,.9);
+  pointer-events:none;
+}
+.map-floating-chip b{font-size:11px;color:var(--navy)}
 
 /* TEEGA BANNER */
 .teega{
@@ -687,7 +872,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
 .t-card span{display:block;padding:0 4px 6px;font-size:9px;color:#aebbd0}
 
 /* ABOUT TEAM */
-.about{background:var(--bg-subtle)}
+.about{background:var(--bg)}
 .about-team-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;margin-bottom:60px}
 .team-visual{
   position:relative;
@@ -743,7 +928,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
 .stat span{font-size:10px;color:#738194;font-weight:700}
 
 /* FEEDBACK */
-.feedback{background:var(--bg)}
+.feedback{background:var(--bg-subtle)}
 .feedback-shell{position:relative}
 .feedback-track{
   display:grid;
@@ -839,7 +1024,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
 .feedback-count{color:#6c7b90;font-size:10px;font-weight:800;letter-spacing:1px;margin-right:8px}
 
 /* CONTACT */
-.contact{background:var(--bg-subtle)}
+.contact{background:var(--bg)}
 .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px}
 .contact-list{margin-top:24px;display:grid;gap:12px}
 .contact-item{
@@ -1236,6 +1421,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
 @media(max-width:1100px){
   .service-grid{grid-template-columns:repeat(3, 1fr)}
   .product-grid{grid-template-columns:repeat(3, 1fr)}
+  .location-grid{grid-template-columns:1fr}
 }
 @media(max-width:980px){
   .links{display:none}
@@ -1279,7 +1465,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   .product-media{height:180px}
   .product-info{padding:12px}
   .product-name{font-size:13px}
-  .product-desc{display:none} /* Kemaskan paparan mobile */
+  .product-desc{display:none}
   .teega-products{grid-template-columns:1fr 1fr}
   .feedback-track{grid-auto-columns:88%}
   .about-team-meta{grid-template-columns:1fr}
@@ -1287,6 +1473,9 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   .quick-grid,.checkout-grid{grid-template-columns:1fr}
   .quick-image{min-height:260px}
   .quick-copy{padding:22px 18px}
+  .loc-action-buttons{grid-template-columns:1fr}
+  .map-embed-wrapper{min-height:350px}
+  .map-embed-wrapper iframe{min-height:350px}
 }
 </style>
 </head>
@@ -1313,6 +1502,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
     <a href="#home">Home</a>
     <a href="#services">Services</a>
     <a href="#shop">Shop</a>
+    <a href="#location">Location</a>
     <a href="#about">About</a>
     <a href="#feedback">Feedback</a>
     <a href="#contact">Contact</a>
@@ -1335,6 +1525,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   <a href="#home" onclick="closeMenu()" style="display:block;padding:13px;font-weight:800">Home</a>
   <a href="#services" onclick="closeMenu()" style="display:block;padding:13px;font-weight:800">Services</a>
   <a href="#shop" onclick="closeMenu()" style="display:block;padding:13px;font-weight:800">Shop</a>
+  <a href="#location" onclick="closeMenu()" style="display:block;padding:13px;font-weight:800">Location</a>
   <a href="#about" onclick="closeMenu()" style="display:block;padding:13px;font-weight:800">About</a>
   <a href="#feedback" onclick="closeMenu()" style="display:block;padding:13px;font-weight:800">Feedback</a>
   <a href="#contact" onclick="closeMenu()" style="display:block;padding:13px;font-weight:800">Contact</a>
@@ -1499,6 +1690,136 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   </div>
 </section>
 
+<!-- ========================================================
+     SMART LOCATION & GEOLOCATION SECTION (UNION IV HQ)
+     ======================================================== -->
+<section class="section location-section" id="location">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Visit Our Flagship Hub</div>
+        <h2 class="section-title">HQ &amp; Store Location.</h2>
+      </div>
+      <p class="section-sub">Kunjungi Hub Rasmi UNION IV di Gong Kepas, Besut — semak jarak masa nyata dari lokasi anda, waktu operasi terkini, dan pandu arah terus ke pintu utama kami.</p>
+    </div>
+
+    <div class="location-grid reveal">
+      <!-- KAD MAKLUMAT LOKASI & RADAR PINTAR -->
+      <div class="location-card">
+        <div>
+          <div class="location-header">
+            <div>
+              <span class="loc-institution-badge">
+                <svg class="icon-svg" style="width:14px;height:14px" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                FLAGSHIP STORE · MULTI-SERVICE HUB
+              </span>
+              <h3 class="loc-name">UNION IV Flagship Store</h3>
+              <p class="loc-sub">Hub Operasi, Fragrance Bar &amp; Kaunter Money Exchange</p>
+            </div>
+            <div class="loc-status-pill" id="liveStatusPill">
+              <span class="loc-status-dot"></span>
+              <span id="liveStatusText">Checking Status...</span>
+            </div>
+          </div>
+
+          <!-- SMART GEOLOCATION RADAR BOX -->
+          <div class="geo-smart-box">
+            <div class="geo-box-top">
+              <span class="geo-title">
+                <svg class="icon-svg" style="width:14px;height:14px;stroke:#9bc2f7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                Smart Geolocation Radar
+              </span>
+              <span style="font-size:9.5px;color:#cbd9ec;font-weight:700">GPS Live Sync</span>
+            </div>
+            
+            <div class="geo-distance-display" id="geoDistanceVal">
+              -- <small>KM dari lokasi anda</small>
+            </div>
+            
+            <p class="geo-instruction" id="geoNotice">
+              Tekan butang di bawah untuk mengesan kedudukan anda secara automatik dan mengira anggaran masa memandu terus ke UNION IV Flagship Store.
+            </p>
+            
+            <button type="button" class="btn-geo-detect" id="btnDetectLocation" onclick="detectUserLocation()">
+              <svg class="icon-svg" style="width:14px;height:14px" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Kira Jarak ke UNION IV Hub</span>
+            </button>
+          </div>
+
+          <!-- SENARAI MAKLUMAT RASMI UNION IV -->
+          <div class="location-details-list">
+            <div class="loc-detail-row">
+              <div class="loc-detail-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="loc-detail-text">
+                <b>T166 Kampung Gong Kepas, 22200 Besut, Terengganu</b>
+                <span>Pusat Operasi Utama &amp; Store Pickup UNION IV</span>
+              </div>
+            </div>
+
+            <div class="loc-detail-row">
+              <div class="loc-detail-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="loc-detail-text">
+                <b id="opHoursMain">Dibuka Setiap Hari: 9:00 AM – 10:00 PM</b>
+                <span>Perkhidmatan Kaunter &amp; Money Exchange Fast Response</span>
+              </div>
+            </div>
+
+            <div class="loc-detail-row">
+              <div class="loc-detail-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="loc-detail-text">
+                <b>09-695 7244 / +60 12-345 6789</b>
+                <span>Talian Hotline Pelanggan &amp; WhatsApp Support</span>
+              </div>
+            </div>
+
+            <div class="loc-detail-row">
+              <div class="loc-detail-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </div>
+              <div class="loc-detail-text">
+                <b><a href="https://instagram.com/unioniv.store" target="_blank" rel="noopener" style="color:var(--blue)">@unioniv.store · hello@unioniv.com ↗</a></b>
+                <span>Saluran Rasmi &amp; Khidmat Konsultasi Online</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTANG TINDAKAN PANTAS -->
+        <div class="loc-action-buttons">
+          <a class="btn-directions" id="btnGoogleDirections" href="https://www.google.com/maps/dir/?api=1&destination=T166+Kampung+Gong+Kepas,+22200+Besut,+Terengganu" target="_blank" rel="noopener">
+            <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+            DIRECTIONS KE UNION IV
+          </a>
+          <button type="button" class="btn-secondary-loc" onclick="copyAddress()">
+            <svg class="icon-svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            SALIN ALAMAT HUB
+          </button>
+        </div>
+      </div>
+
+      <!-- KANAN: GOOGLE MAPS EMBEDDED DENGAN PIN UNION IV -->
+      <div class="map-embed-wrapper">
+        <div class="map-floating-chip">
+          <span style="width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.25)"></span>
+          <b>UNION IV Flagship Hub</b>
+        </div>
+        <iframe 
+          title="UNION IV Flagship Store Google Maps"
+          src="https://maps.google.com/maps?q=T166+Kampung+Gong+Kepas,+22200+Besut,+Terengganu&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section teega" id="collections">
   <div class="container teega-grid">
     <div class="reveal">
@@ -1601,7 +1922,8 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
       <p style="margin-top:18px;color:#5a687d;line-height:1.8">Reach out to us directly through any of our channels or submit your inquiry below.</p>
       <div class="contact-list">
         <div class="contact-item"><span>Email</span><b>hello@unioniv.com</b></div>
-        <div class="contact-item"><span>Phone / WhatsApp</span><b>+60 1X-XXXX XXXX</b></div>
+        <div class="contact-item"><span>Hub Hotline</span><b>09-695 7244</b></div>
+        <div class="contact-item"><span>Phone / WhatsApp</span><b>+60 12-345 6789</b></div>
         <div class="contact-item"><span>Instagram</span><b>@unioniv.store</b></div>
         <div class="contact-item"><span>Money Exchange Desk</span><b>Fast Response WhatsApp</b></div>
       </div>
@@ -1620,11 +1942,11 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand"><img src="images/logo.png" alt="UNION IV logo"><p>UNION IV — Multi-Service Solutions. Designer fragrance, Arabic perfume & decants, jerseys, thrift fashion, TEEGA treats and money exchange.</p></div>
-      <div><h4>Navigation</h4><a href="#home">Home</a><a href="#services">Services</a><a href="#shop">Shop</a><a href="#about">About</a></div>
+      <div><h4>Navigation</h4><a href="#home">Home</a><a href="#services">Services</a><a href="#shop">Shop</a><a href="#location">Location</a><a href="#about">About</a></div>
       <div><h4>Collections</h4><a href="#shop" onclick="setFilter('Perfume', true)">Perfume Collection</a><a href="#shop" onclick="setFilter('Jersey', true)">Jersey & Apparel</a><a href="#shop" onclick="setFilter('Thrift', true)">Thrift & Bundle</a><a href="#shop" onclick="setFilter('TEEGA Snacks', true)">TEEGA Treats</a></div>
       <div><h4>Social</h4>
         <a class="social-link" data-social="instagram" href="https://instagram.com/unioniv.store" target="_blank" rel="noopener">Instagram</a>
-        <a class="social-link" data-social="facebook" href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+        <a class="social-link" data-social="facebook" href="https://www.facebook.com/share/1Azsh4jq6q/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
         <a class="social-link" data-social="whatsapp" href="https://wa.me/60123456789" target="_blank" rel="noopener">WhatsApp</a>
         <a href="#contact">Contact us</a>
       </div>
@@ -1652,7 +1974,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
   </div>
 </aside>
 
-<!-- QUICK MODAL (DENGAN CLICK-OUTSIDE TO DISMISS) -->
+<!-- QUICK MODAL -->
 <div class="modal-wrap" id="quickModal" onclick="if(event.target===this)closeModal('quickModal')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('quickModal')" aria-label="Close modal">
@@ -1784,6 +2106,7 @@ h1{font-size:clamp(54px,7vw,92px);line-height:.88;letter-spacing:-5px;color:var(
             <option>Thrift</option>
             <option>TEEGA</option>
             <option>Money Exchange</option>
+            <option>Store Visit</option>
             <option>Service</option>
           </select>
         </div>
@@ -1969,7 +2292,7 @@ let quickPerfumeIndex = 0;
 const $ = id => document.getElementById(id);
 const money = n => 'RM' + Number(n).toFixed(2);
 
-// PENGENDALI IMEJ JIKA GAGAL DIMUAT NAIK (FALLBACK BERKUALITI)
+// FALLBACK GAMBAR
 function handleImgError(img, cat) {
   img.onerror = null;
   const svgPlaceholder = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f0f4f9"/><text x="50%" y="46%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="20" fill="%23091e42">UNION IV</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="12" fill="%231b63c7">${encodeURIComponent(cat || 'PRODUCT')}</text></svg>`;
@@ -2018,7 +2341,98 @@ function hideToast() {
 }
 
 /* ========================================================
-   FEATURED PRODUCTS & FILTER LOGIC (FIXED SCROLL & CLICK)
+   SMART LOCATION & GEOLOCATION LOGIC (UNION IV HQ)
+   ======================================================== */
+const UNION_IV_COORDS = { lat: 5.7515, lng: 102.5489 }; // Koordinat Pusat Operasi UNION IV
+
+// KIRA JARAK HAVERSINE (KM)
+function calculateHaversine(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius bumi dalam KM
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return (R * c).toFixed(1);
+}
+
+// KESAN LOKASI PENGGUNA MENGGUNAKAN GEOLOCATION API
+function detectUserLocation() {
+  const btn = $('btnDetectLocation');
+  const notice = $('geoNotice');
+  const distVal = $('geoDistanceVal');
+
+  if (!navigator.geolocation) {
+    showToast('GPS Tidak Disokong', 'Pelayar anda tidak menyokong fungsi Geolocation.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = `<svg class="icon-svg" style="animation:spin 1s linear infinite" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> Mengesan Lokasi...`;
+
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const userLat = position.coords.latitude;
+      const userLng = position.coords.longitude;
+      const km = calculateHaversine(userLat, userLng, UNION_IV_COORDS.lat, UNION_IV_COORDS.lng);
+      
+      distVal.innerHTML = `${km} <small>KM dari lokasi semasa anda ke UNION IV Hub</small>`;
+      notice.innerHTML = `📍 <b>Lokasi dikesan!</b> Anggaran masa perjalanan ke UNION IV Flagship Store adalah ~${Math.round(km / 60 * 60) + 5} minit memandu bergantung aliran trafik.`;
+      
+      // Update link arah pemanduan terus dari GPS pengguna ke kedai UNION IV
+      $('btnGoogleDirections').href = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=T166+Kampung+Gong+Kepas,+22200+Besut,+Terengganu`;
+      
+      btn.disabled = false;
+      btn.innerHTML = `✓ Lokasi Berjaya Dikesan`;
+      showToast('Lokasi Dikesan', `Jarak anda ke UNION IV Flagship Store ialah ${km} KM.`, true);
+    },
+    error => {
+      btn.disabled = false;
+      btn.innerHTML = `Cuba Lagi Kesan Lokasi`;
+      let msg = 'Sila benarkan akses lokasi (Permission) pada pelayar anda.';
+      if (error.code === error.PERMISSION_DENIED) msg = 'Akses lokasi telah ditolak oleh pelayar.';
+      showToast('Gagal Kesan Lokasi', msg);
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+}
+
+// SALIN ALAMAT KE CLIPBOARD
+function copyAddress() {
+  const fullAddress = 'UNION IV Flagship Store, T166 Kampung Gong Kepas, 22200 Besut, Terengganu';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(fullAddress).then(() => {
+      showToast('Alamat Disalin!', 'Alamat UNION IV Flagship Store telah disalin ke clipboard.', true);
+    });
+  } else {
+    showToast('Alamat Hub', fullAddress, true);
+  }
+}
+
+// SEMAK STATUS WAKTU OPERASI HARIAN KEDAI (9:00 AM - 10:00 PM)
+function updateOperatingStatus() {
+  const now = new Date();
+  const hour = now.getHours();
+  
+  // Waktu operasi kedai UNION IV: Dibuka setiap hari jam 9:00 AM hingga 10:00 PM
+  const isOpen = (hour >= 9 && hour < 22);
+
+  const pill = $('liveStatusPill');
+  const txt = $('liveStatusText');
+
+  if (isOpen) {
+    pill.classList.remove('closed');
+    txt.textContent = 'Open · Closes 10:00 PM';
+  } else {
+    pill.classList.add('closed');
+    txt.textContent = 'Closed Now · Opens 9:00 AM';
+  }
+}
+
+/* ========================================================
+   FEATURED PRODUCTS & FILTER LOGIC
    ======================================================== */
 function renderFilters() {
   const cats = ['All', 'Perfume', 'Jersey', 'Thrift', 'TEEGA Snacks'];
@@ -2027,7 +2441,6 @@ function renderFilters() {
   `).join('');
 }
 
-// FIX: Parameter `shouldScroll` mengelakkan skrin melompat jika ditapis dari dalam seksyen
 function setFilter(cat, shouldScroll = false) {
   activeFilter = cat;
   renderFilters();
@@ -2046,7 +2459,6 @@ function orbitGo(category, e) {
   setFilter(category, true);
 }
 
-// FIX: Seluruh kad kini boleh ditekan, layout kemas & harga decant perfume tepat
 function renderProducts() {
   const list = activeFilter === 'All' ? products : products.filter(p => p.cat === activeFilter);
   const container = $('productGrid');
@@ -2080,9 +2492,7 @@ function renderProducts() {
   }).join('');
 }
 
-/* ========================================================
-   QUICK VIEW MODAL DENGAN LOGIK PERFUME & SAIZ YANG TEPAT
-   ======================================================== */
+/* QUICK VIEW MODAL */
 function openQuick(id) {
   quickProduct = products.find(p => p.id === id);
   if (!quickProduct) return;
@@ -2201,10 +2611,8 @@ function changeQuickQty(d) {
   $('quickQty').textContent = quickQty;
 }
 
-// FIX: Menyimpan perfumeChoice dengan gambar & nama yang betul ke dalam troli
 function addQuickToCart() {
   if (!quickProduct) return;
-
   const chosenPerfume = quickProduct.perfumes ? quickProduct.perfumes[quickPerfumeIndex] : null;
   addToCart(quickProduct.id, quickQty, quickOption, chosenPerfume);
   closeModal('quickModal');
@@ -2223,7 +2631,7 @@ function addToCart(id, qty = 1, option = null, perfumeChoice = null) {
     itemName = pc[0].split(' · ')[0];
     label = `${pc[0]} (${chosen[0]})`;
     price = chosen[1];
-    itemImg = pc[5]; // FIX: Gambar perfume spesifik dipaparkan dalam troli
+    itemImg = pc[5];
   } else {
     const chosen = option || (p.options ? p.options[0] : [null, p.price]);
     itemName = p.name;
@@ -2238,16 +2646,7 @@ function addToCart(id, qty = 1, option = null, perfumeChoice = null) {
   if (existing) {
     existing.qty += qty;
   } else {
-    cart.push({
-      id: p.id,
-      name: itemName,
-      cat: p.cat,
-      img: itemImg,
-      qty,
-      price,
-      option: label,
-      key
-    });
+    cart.push({ id: p.id, name: itemName, cat: p.cat, img: itemImg, qty, price, option: label, key });
   }
 
   saveCart();
@@ -2289,9 +2688,7 @@ function changeQtySafe(encodedKey, delta) {
   if (!item) return;
 
   item.qty += delta;
-  if (item.qty <= 0) {
-    cart = cart.filter(x => x.key !== key);
-  }
+  if (item.qty <= 0) cart = cart.filter(x => x.key !== key);
   saveCart();
 }
 
@@ -2323,9 +2720,7 @@ function openCheckout() {
   updateTracker();
 }
 
-/* ========================================================
-   TRACKER & CHECKOUT SYSTEM DENGAN ANIMASI LOGO TERBANG
-   ======================================================== */
+/* CHECKOUT TRACKER */
 function updateTracker() {
   const fName = $('coName').value.trim();
   const fEmail = $('coEmail').value.trim();
@@ -2544,9 +2939,7 @@ function observeReveals() {
   });
 }
 
-/* ========================================================
-   3D HERO GLOBE ORBIT DENGAN DRAG & HOLD NAVIGATION
-   ======================================================== */
+/* 3D HERO GLOBE ORBIT */
 let orbitAngle = 0, orbitAuto = true, orbitDragging = false, orbitPointerId = null;
 let startPointerX = 0, startPointerY = 0, lastPointerX = 0, lastPointerY = 0, totalDragDist = 0, orbitTilt = 0;
 
@@ -2654,6 +3047,7 @@ updateCart();
 observeReveals();
 renderGlobe();
 updateFeedbackCount();
+updateOperatingStatus();
 </script>
 </body>
 </html>
